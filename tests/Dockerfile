@@ -1,5 +1,4 @@
 FROM ubuntu:20.04
-MAINTAINER Shawn Milochik <shawn@milochik.com>
 ENV DEBIAN_FRONTEND noninteractive
 ENV REFRESHED_AT 2022-08-17
 RUN apt-get update
