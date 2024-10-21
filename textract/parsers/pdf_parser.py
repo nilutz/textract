@@ -57,9 +57,12 @@ class Parser(ShellParser):
             stdout, _ = self.run(['pdf2txt.py', filename])
         except OSError:
             try:
-                stdout, _ = self.run(['python3',pdf2txt_path, filename])
+                stdout, _ = self.run(['python',pdf2txt_path, filename])
             except ShellError:
-                stdout, _ = self.run(['python2',pdf2txt_path, filename])
+                try:
+                    stdout, _ = self.run(['python3',pdf2txt_path, filename])
+                except ShellError:
+                    stdout, _ = self.run(['python2',pdf2txt_path, filename])
         return stdout
 
     def extract_tesseract(self, filename, **kwargs):
